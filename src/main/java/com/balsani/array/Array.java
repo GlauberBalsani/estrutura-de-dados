@@ -2,6 +2,8 @@ package com.balsani.array;
 
 import com.balsani.exception.GenericException;
 
+import java.util.Arrays;
+
 public class Array <T>{
     private T[] elements;
     private int index;
@@ -38,5 +40,27 @@ public class Array <T>{
 ////                break;
 ////            }
 ////        }
+    }
+
+    public int getSize() {
+        return this.index;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append("[");
+
+        for (int i = 0; i < index-1; i++) {
+            s.append(this.elements[i]);
+            s.append(", ");
+        }
+
+        if (this.getSize() > 0) {
+            s.append(this.elements[this.index-1]);
+        }
+        s.append("]");
+
+        return s.toString();
     }
 }

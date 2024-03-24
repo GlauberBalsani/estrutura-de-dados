@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 class ArrayTest {
     private static Array<String> array;
@@ -27,6 +27,21 @@ class ArrayTest {
         array.addElement("Samira");
 
 
+        System.out.println(array);
+
+
+    }
+
+    @Test
+    public void shouldReturnSizeOfArray() {
+        array.addElement("Glauber");
+        array.addElement("Samira");
+        var actual = array.getSize();
+        var expected = 2;
+
+        Assertions.assertEquals(expected,actual);
+
+        System.out.println(array);
     }
 
 
