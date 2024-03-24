@@ -44,6 +44,20 @@ class ArrayTest {
         System.out.println(array);
     }
 
+    @Test
+    public void shouldReturnPosition() {
+        array.addElement("Glauber");
+
+        System.out.println(array.search(15));
+    }
+
+    @Test
+    public void shouldReturnIfElementsExists() {
+        array.addElement("Glauber");
+        array.addElement("Samira");
+        System.out.println(array.exists("Samira"));
+    }
+
 
 
 }

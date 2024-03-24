@@ -2,25 +2,54 @@ package com.balsani.array;
 
 import com.balsani.exception.GenericException;
 
-import java.util.Arrays;
 
-public class Array <T>{
+
+public class Array<T> {
     private T[] elements;
-    private int index;
+    private int size;
+
 
     public Array(int capacity) {
         this.elements = (T[]) new Object[capacity];
-        this.index = 0;
+        this.size = 0;
+
 
     }
 
+//    public T search(int position) {
+//        if (this.elements[position] == null) {
+//            throw new GenericException("Position not found");
+//        }
+//        return this.elements[position];
+//    }
+
+    public T search(int position) {
+        if (!(position >=0 && position < size)) {
+            throw new IllegalArgumentException("Position not found");
+        }
+        return this.elements[position];
+    }
+
+    public int exists(T element) {
+        for (int i = 0; i < elements.length; i++) {
+            if (elements[i] == element) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
+
     public boolean addElement(T element) {
-        if (this.index < this.elements.length) {
-            this.elements[this.index] = element;
-            this.index++;
+        if (this.size < this.elements.length) {
+            this.elements[this.size] = element;
+            this.size++;
             return true;
         }
         return false;
+
+
 
 //    public void addElement(T element) {
 //        if (this.index < this.elements.length) {
@@ -43,7 +72,7 @@ public class Array <T>{
     }
 
     public int getSize() {
-        return this.index;
+        return this.size;
     }
 
     @Override
@@ -51,13 +80,13 @@ public class Array <T>{
         StringBuilder s = new StringBuilder();
         s.append("[");
 
-        for (int i = 0; i < index-1; i++) {
+        for (int i = 0; i < size - 1; i++) {
             s.append(this.elements[i]);
             s.append(", ");
         }
 
         if (this.getSize() > 0) {
-            s.append(this.elements[this.index-1]);
+            s.append(this.elements[this.size - 1]);
         }
         s.append("]");
 
