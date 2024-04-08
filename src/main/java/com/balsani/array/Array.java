@@ -2,13 +2,12 @@ package com.balsani.array;
 
 import com.balsani.exception.GenericException;
 
-
-
 public class Array<T> {
     private T[] elements;
     private int size;
 
 
+    @SuppressWarnings("unchecked")
     public Array(int capacity) {
         this.elements = (T[]) new Object[capacity];
         this.size = 0;
@@ -24,7 +23,7 @@ public class Array<T> {
 //    }
 
     public T search(int position) {
-        if (!(position >=0 && position < size)) {
+        if (!(position >= 0 && position < size)) {
             throw new IllegalArgumentException("Position not found");
         }
         return this.elements[position];
@@ -39,16 +38,26 @@ public class Array<T> {
         return -1;
     }
 
+    public boolean add(int position, T element) {
+        if (!(position >= 0 && position < size)) {
+            throw new IllegalArgumentException("Position not found");
+        }
 
+        for (int i = size; i >= position; i--) {
+            elements[i+1] = elements[i];
+        }
+
+        return false;
+    }
 
     public boolean addElement(T element) {
+
         if (this.size < this.elements.length) {
             this.elements[this.size] = element;
             this.size++;
             return true;
         }
         return false;
-
 
 
 //    public void addElement(T element) {

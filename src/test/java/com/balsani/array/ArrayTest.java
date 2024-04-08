@@ -47,8 +47,9 @@ class ArrayTest {
     @Test
     public void shouldReturnPosition() {
         array.addElement("Glauber");
+        array.addElement("Samira");
 
-        System.out.println(array.search(15));
+        System.out.println(array.search(1));
     }
 
     @Test
